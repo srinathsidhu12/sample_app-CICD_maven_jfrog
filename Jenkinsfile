@@ -81,6 +81,9 @@ pipeline {
     }
 
     post {
+         always {
+          cleanWs()
+         }  
         success {
             echo " Successfully deployed image: ${DOCKER_HUB_REPO}:${IMAGE_TAG}"
         }
