@@ -66,7 +66,7 @@ pipeline {
                      git commit -m "Update deployment image to ${DOCKER_HUB_REPO}:${IMAGE_TAG}"
                      git push origin master
                     """
-
+                  }
                     // Apply the updated manifest to the cluster
                   withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
                     sh """
@@ -75,10 +75,9 @@ pipeline {
                      kubectl rollout status deployment/${K8S_DEPLOYMENT_NAME}
                     """
                   }
-                }
-            }
-        }   
-
+             }
+         }   
+       } 
     }
 
     post {
