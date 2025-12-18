@@ -6,6 +6,10 @@ pipeline {
         IMAGE_TAG = "${BUILD_NUMBER}"
         K8S_DEPLOYMENT_NAME = "springboot-demo"
     }
+    tools {
+       jdk 'JDK-21'
+       maven 'Maven-3.9.11'
+    }
     stages {
         stage('Checkout Code') {
             steps {
