@@ -15,14 +15,6 @@ pipeline {
                 git 'https://github.com/srinathsidhu12/Jave_spring_boot_sample_app.git'	
             }
         }
-        stage('Check Java') {
-            steps {
-               sh 'java -version'
-               sh 'javac -version'
-               sh 'echo $JAVA_HOME'
-            }  
-        }
-
         stage('Maven Build') {
             steps {
                 sh 'mvn clean package -DskipTests'
@@ -66,9 +58,6 @@ pipeline {
     }
 
     post {
-         always {
-          cleanWs()
-         }  
         success {
             echo " Successfully deployed image: ${DOCKER_HUB_REPO}:${IMAGE_TAG}"
         }
