@@ -16,7 +16,7 @@ public class DemoApplication {
 class HelloController {
     @GetMapping("/")
     public String hello() {
-        return "Hello from Spring Boot! Deployed via Jenkins CI/CD..🚀";
+        return "Hello from Spring Boot App! Deployed via Jenkins CI/CD..🚀";
     }
 }
 
