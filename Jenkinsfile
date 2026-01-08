@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/srinathsidhu12/Jave_spring_boot_sample_app.git'	
+                git 'https://github.com/srinathsidhu12/sample_app-CICD_maven_jfrog.git'	
             }
         }
         stage('Maven Build') {
