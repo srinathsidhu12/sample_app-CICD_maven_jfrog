@@ -24,10 +24,16 @@ pipeline {
         }
         stage('Maven Deploy') {
             steps {
-                 withMaven(mavenSettingsConfig: '1f642501-77af-460c-9268-473960662354') {                 //jfrog-maven-settings = Managed Maven settings.xml
-                   sh 'mvn deploy -DskipTests'
-                 }
+               withCredentials([usernamePassword(
+               credentialsId: 'Jfrog_credentials',
+               usernameVariable: 'JFROG_USER',
+               passwordVariable: 'JFROG_TOKEN'
+        )]) {
+             withMaven(mavenSettingsConfig: '1f642501-77af-460c-9268-473960662354') {
+                sh 'mvn deploy -DskipTests'
             }
+          }
+         }
         }
         stage('Build Docker Image') {
             steps {
