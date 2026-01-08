@@ -4,6 +4,8 @@ pipeline {
         DOCKER_HUB_REPO = "srinathsidhu12/java_spring_boot_sample_app"
         IMAGE_TAG = "${BUILD_NUMBER}"
         K8S_DEPLOYMENT_NAME = "springboot-demo"
+        JFROG_USER  = credentials('Jfrog_credentials').username
+        JFROG_TOKEN = credentials('Jfrog_credentials').password
     }
     tools {
        jdk 'JDK-21'
@@ -20,7 +22,12 @@ pipeline {
                 sh 'mvn clean package -DskipTests'
             }
         }
-
+        stage('Maven Deploy') {
+            steps {
+                 withMaven(mavenSettingsConfig: 'jfrog-maven-settings') {                           #jfrog-maven-settings = Managed Maven settings.xml
+                  sh 'mvn deploy -DskipTests'
+                 }
+        }
         stage('Build Docker Image') {
             steps {
                 sh """
