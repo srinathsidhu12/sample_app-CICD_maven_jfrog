@@ -46,5 +46,17 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>ip-172-31-43-186-releases</name>
+        <url>http://13.233.229.203:8081/artifactory/sample_app_maven_repo</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>ip-172-31-43-186-snapshots</name>
+        <url>http://13.233.229.203:8081/artifactory/sample_app_maven_repo</url>
+    </snapshotRepository>
+    </distributionManagement>
 </project>
 
