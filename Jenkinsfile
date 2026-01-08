@@ -24,10 +24,10 @@ pipeline {
         }
         stage('Maven Deploy') {
             steps {
-                 withMaven(mavenSettingsConfig: 'jfrog-maven-settings') {                          //jfrog-maven-settings = Managed Maven settings.xml
-                  sh 'mvn deploy -DskipTests'
+                 withMaven(mavenSettingsConfig: '1f642501-77af-460c-9268-473960662354') {                 //jfrog-maven-settings = Managed Maven settings.xml
+                   sh 'mvn deploy -DskipTests'
                  }
-           }
+            }
         }
         stage('Build Docker Image') {
             steps {
