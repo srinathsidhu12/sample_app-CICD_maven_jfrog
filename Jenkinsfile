@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Maven Deploy') {
             steps {
-                 withMaven(mavenSettingsConfig: 'jfrog-maven-settings') {                           #jfrog-maven-settings = Managed Maven settings.xml
+                 withMaven(mavenSettingsConfig: 'jfrog-maven-settings') {                          //jfrog-maven-settings = Managed Maven settings.xml
                   sh 'mvn deploy -DskipTests'
                  }
         }
