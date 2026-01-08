@@ -27,6 +27,7 @@ pipeline {
                  withMaven(mavenSettingsConfig: 'jfrog-maven-settings') {                          //jfrog-maven-settings = Managed Maven settings.xml
                   sh 'mvn deploy -DskipTests'
                  }
+           }
         }
         stage('Build Docker Image') {
             steps {
